@@ -1,5 +1,4 @@
-chunk-transform-webpack-plugin [![Build Status](https://travis-ci.org/ali322/chunk-transform-webpack-plugin.svg?branch=master)](https://travis-ci.org/ali322/chunk-transform-webpack-plugin) 
-[![npm version](https://badge.fury.io/js/chunk-transform-webpack-plugin.svg)](https://badge.fury.io/js/chunk-transform-webpack-plugin)
+chunk-transform-webpack-plugin [![Build Status](https://travis-ci.org/ali322/chunk-transform-webpack-plugin.svg?branch=master)](https://travis-ci.org/ali322/chunk-transform-webpack-plugin) [![npm version](https://badge.fury.io/js/chunk-transform-webpack-plugin.svg)](https://badge.fury.io/js/chunk-transform-webpack-plugin)
 ===
 [![NPM](https://nodei.co/npm/chunk-transform-webpack-plugin.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/chunk-transform-webpack-plugin/)
 
