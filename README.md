@@ -8,7 +8,7 @@ Install
 ===
 
 ```javascript
-npm install inject-html-webpack-plugin --save--dev
+npm install chunk-transform-webpack-plugin --save--dev
 ```
 
 Usage
@@ -17,7 +17,7 @@ Usage
 add plugin in your webpack.config.js
 
 ```javascript
-var ChunkTransformPlugin = require('inject-html-webpack-plugin')
+var ChunkTransformPlugin = require('chunk-transform-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
