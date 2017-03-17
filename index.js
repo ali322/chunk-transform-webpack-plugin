@@ -109,6 +109,7 @@ ChunkTransformWebpackPlugin.prototype.apply = function(compiler) {
                     if(k == file){
                         return _filename
                     }
+                    return k
                 })
             })
             namedChunks[v].files = _chunkFiles
