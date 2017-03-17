@@ -113,6 +113,7 @@ ChunkTransformWebpackPlugin.prototype.apply = function(compiler) {
             })
             namedChunks[v].files = _chunkFiles
         })
+        compilation.assets = assets
         that.runing = true
         callback()
     })
