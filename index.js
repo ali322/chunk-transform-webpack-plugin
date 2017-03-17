@@ -1,6 +1,5 @@
-var path = require('path')
-
 var nextIdent = 0;
+let _ = require('lodash')
 
 function ChunkTransformWebpackPlugin(options) {
     options.chunks = options.chunks || []
@@ -106,8 +105,11 @@ ChunkTransformWebpackPlugin.prototype.apply = function(compiler) {
                     return
                 }
                 _chunkFiles.push(_filename)
-                assets[_filename] = compilation.assets[file]
-                delete assets[file]
+                assets = _.mapKeys(assets,function(v,k){
+                    if(k == file){
+                        return _filename
+                    }
+                })
             })
             namedChunks[v].files = _chunkFiles
         })
