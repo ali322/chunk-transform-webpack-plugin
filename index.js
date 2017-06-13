@@ -3,7 +3,7 @@ let _ = require('lodash')
 
 function ChunkTransformWebpackPlugin(options) {
     options.chunks = options.chunks || []
-    if (typeof options.filename === 'undefined') {
+    if (!options.filename) {
         throw new Error('ChunkTransformWebpackPlugin filename argument required')
     }
     this.options = options
@@ -96,11 +96,15 @@ ChunkTransformWebpackPlugin.prototype.apply = function(compiler) {
                     delete assets[file]
                     return
                 }
-                var _filename = file
+                var _filename
                 if (typeof transformer === 'function') {
                     _filename = transformer(file)
                 } else if (typeof transformer === 'string') {
                     _filename = transformer
+                } else if (transformer === true) {
+                    _filename = file
+                } else {
+                    return
                 }
                 _chunkFiles.push(_filename)
                 assets = _.mapKeys(assets, function(v, k) {
