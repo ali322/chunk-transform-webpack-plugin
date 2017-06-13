@@ -1,6 +1,6 @@
 {
   "name": "chunk-transform-webpack-plugin",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "transform webpack chunk",
   "main": "index.js",
   "scripts": {
