@@ -1,13 +1,10 @@
 {
   "name": "chunk-transform-webpack-plugin",
-  "version": "0.0.13",
+  "version": "0.0.15",
   "description": "transform webpack chunk",
   "main": "index.js",
   "scripts": {
-    "test": "ava --tap | tap-spec"
-  },
-  "ava": {
-    "babel": "inherit"
+    "test": "mocha test"
   },
   "repository": {
     "type": "git",
@@ -23,15 +20,12 @@
   },
   "homepage": "https://github.com/ali322/chunk-transform-webpack-plugin#readme",
   "devDependencies": {
-    "ava": "^0.17.0",
-    "babel-core": "^6.21.0",
-    "babel-loader": "^6.2.10",
-    "babel-preset-env": "^1.4.0",
-    "css-loader": "^0.26.1",
-    "extract-text-webpack-plugin": "^1.0.1",
-    "style-loader": "^0.13.1",
-    "tap-spec": "^4.1.1",
-    "webpack": "^1.14.0"
+    "chai": "^4.0.2",
+    "css-loader": "^0.28.4",
+    "extract-text-webpack-plugin": "^2.1.2",
+    "mocha": "^3.4.2",
+    "style-loader": "^0.18.2",
+    "webpack": "^2.6.1"
   },
   "dependencies": {
     "lodash": "^4.17.4"

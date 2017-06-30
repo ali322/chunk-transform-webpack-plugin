@@ -1,11 +1,8 @@
-var nextIdent = 0;
-let _ = require('lodash')
+let nextIdent = 0
+let mapKeys = require('lodash/mapKeys')
 
 function ChunkTransformWebpackPlugin(options) {
     options.chunks = options.chunks || []
-    if (!options.filename) {
-        throw new Error('ChunkTransformWebpackPlugin filename argument required')
-    }
     this.options = options
     this.runing = false
     if (typeof options.test === 'function') {
@@ -21,13 +18,13 @@ function ChunkTransformWebpackPlugin(options) {
 }
 
 ChunkTransformWebpackPlugin.prototype.apply = function(compiler) {
-    var that = this
-    var options = this.options
-    var ident = this.ident
-    var selected = options.chunks
-    var chunkName = options.chunkName
-    var transformer = options.filename
-    var isFileMatched = this.test
+    let that = this
+    let options = this.options
+    let ident = this.ident
+    let selected = options.chunks
+    let chunkName = options.chunkName
+    let transformer = options.filename
+    let isFileMatched = this.test
 
     compiler.plugin('this-compilation', function(compilation) {
         compilation.plugin('optimize-chunks', function(chunks) {
@@ -41,17 +38,17 @@ ChunkTransformWebpackPlugin.prototype.apply = function(compiler) {
                 chunks = chunks.filter(function(chunk) {
                     return selected.indexOf(chunk.name) >= 0
                 })
-                var newChunk = chunks.find(function(chunk) {
+                let newChunk = chunks.find(function(chunk) {
                     return chunk.name === chunkName
                 })
                 if (!newChunk) {
                     newChunk = this.addChunk(chunkName)
                     newChunk.initial = newChunk.entry = true
                 }
-                var usedChunks = chunks.filter(function(chunk) {
+                let usedChunks = chunks.filter(function(chunk) {
                     return chunk !== newChunk
                 })
-                var commonModules = []
+                let commonModules = []
                 usedChunks.forEach(function(chunk) {
                     chunk.modules.forEach(function(module) {
                         if (!module.userRequest) return
@@ -82,28 +79,28 @@ ChunkTransformWebpackPlugin.prototype.apply = function(compiler) {
             callback()
             return
         }
-        var namedChunks = compilation.namedChunks
-        var assets = compilation.assets
+        let namedChunks = compilation.namedChunks
+        let assets = compilation.assets
 
         if (that.isHotUpdateCompilation(assets)) {
             callback()
             return
         }
         selected.forEach(function(v) {
-            var _chunkFiles = []
+            let _chunkFiles = []
             namedChunks[v].files.forEach(function(file, i) {
                 if (isFileMatched(file) === false) {
                     delete assets[file]
                     return
                 }
-                var _filename = file
+                let _filename = file
                 if (typeof transformer === 'function') {
                     _filename = transformer(file)
                 } else if (typeof transformer === 'string') {
                     _filename = transformer
                 }
                 _chunkFiles.push(_filename)
-                assets = _.mapKeys(assets, function(v, k) {
+                assets = mapKeys(assets, function(v, k) {
                     if (k == file) {
                         return _filename
                     }
