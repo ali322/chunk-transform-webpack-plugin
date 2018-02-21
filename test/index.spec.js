@@ -1,5 +1,6 @@
 let webpack = require('webpack')
 let path = require('path')
+let fs = require('fs')
 let expect = require('chai').expect
 let ExtractTextPlugin = require('extract-text-webpack-plugin')
 let ChunkTransformPlugin = require('../')
@@ -32,8 +33,8 @@ describe('ChunkTransformPlugin', () => {
                 })
             ]
         },(err,stats)=>{
-            expect(err).to.be(null)
-            const css = fs.readFileSync(path.resolve(__dirname, 'fixtures', 'dist', 'main.css'))
+            expect(err).to.eq(null)
+            const css = fs.readFileSync(path.resolve(__dirname, 'dist', 'main.css'))
             expect(css.length).to.above(0)
             done()
         })
